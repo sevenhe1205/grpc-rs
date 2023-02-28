@@ -1,0 +1,42 @@
+[package]
+name = "grpc-rs"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "fs", "io-util", "time", "signal"]}
+anyhow = "1.0"
+clap = { version = "4.0.32", features = ["derive", "cargo", "env"] }
+futures = "0.3"
+tower = "0.4.13"
+tower-http = { version = "0.3.4", features = ["set-header", "fs", "map-response-body", "trace"] }
+
+serde = { version = "1.0.136", features = ["derive"] }
+serde_json = "1.0"
+serde_with = { version = "1.12", features = ["json"] }
+
+# web framework
+axum = { version = "0.5.10", features = ["headers", "query"] }
+
+
+# gRPC
+tonic = "0.8.0"
+prost = "0.11.0"
+tonic-health = "0.7.0"
+tonic-reflection = "0.5.0"
+
+# metrics
+metrics = "0.20"
+metrics-exporter-prometheus = "0.11.0"
+metrics-process = "1.0.2"
+
+# tracing
+tracing = "0.1.34"
+tracing-subscriber = { version = "0.3", default-features = false, features = ["env-filter", "fmt", "ansi", "tracing-log", "json"] }
+
+[build-dependencies]
+# gRPC build tool
+tonic-build = "0.8.0"
+vergen = { version = "7.4.2", default-features = false, features = ["build", "cargo", "git", "rustc"] }
